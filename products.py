@@ -11,13 +11,7 @@ load_dotenv(find_dotenv())
 db_password =os.environ.get("MONGODB_PASSWORD") 
 
 connection_string = f"mongodb+srv://adhamallahwany:{db_password}@cluster0.hwvsg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-client = MongoClient(connection_string)
-dbs = client.list_database_names()
-# print(dbs)
-e_commerce_dbs = client.e_commerce
-products_collection = e_commerce_dbs.products_collection
-# collections = e_commerce_dbs.list_collection_names()
-# print(collections)
+
 
 printer  = pprint.PrettyPrinter()
 
