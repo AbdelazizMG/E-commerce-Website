@@ -49,7 +49,7 @@ Ensure you have the following installed on your system:
 ### Frontend Setup
 1. Navigate to the frontend directory:
    ```sh
-   cd ../frontend
+   cd chatbot-app\src
    ```
 2. Install dependencies:
    ```sh
@@ -57,12 +57,12 @@ Ensure you have the following installed on your system:
    ```
 3. Start the Vue.js development server:
    ```sh
-   npm run dev
+   npm run serve
    ```
 
 
 ## Usage
-- Open the frontend at `http://localhost:5173/`.
+- Open the frontend at `http://localhost:8080/`.
 - Use the search bar or chatbot to find products.
 - Chatbot understands queries like:
   - "Hi there, i want to buy a nice phone with less than 10000 LE. can you suggest a one?"
