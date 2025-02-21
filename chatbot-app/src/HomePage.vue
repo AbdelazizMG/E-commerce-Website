@@ -32,7 +32,7 @@ export default {
       try {
         const response = await axios.get(
         //`http://127.0.0.1:8000/api/Homepage/`
-        `https://leftovers-deployed-apis-pias8ddje-abdelaziz-mohammads-projects.vercel.app/api/Homepage/`
+        `https://leftovers-deployed-apis-jl767ugxz-abdelaziz-mohammads-projects.vercel.app/api/Homepage/`
       );
       console.log("Response from API:", response.data);
       //console.log("Request:", this.query);

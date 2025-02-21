@@ -25,7 +25,7 @@
         try {
           const response = await axios.get(
           //`http://127.0.0.1:8000/api/AIsearch/?query=${this.query}`
-          `https://leftovers-deployed-apis-pias8ddje-abdelaziz-mohammads-projects.vercel.app/api/AIsearch/?query=${this.query}`
+          `https://leftovers-deployed-apis-jl767ugxz-abdelaziz-mohammads-projects.vercel.app/api/AIsearch/?query=${this.query}`
         );
         // console.log("Response from API:", response);
         // console.log("Response Data from API:", response.data);
