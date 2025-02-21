@@ -70,6 +70,8 @@ CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
     "https://left-overs.vercel.app",
+    "http://localhost:8080",
+    "https://*.vercel.app" 
 ]
 
 ROOT_URLCONF = 'ecommerce.urls'
