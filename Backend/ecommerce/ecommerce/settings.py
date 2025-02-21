@@ -53,6 +53,7 @@ MIDDLEWARE = [
 ]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",  # Allow Vue frontend
+    "https://left-overs.vercel.app"  # Allow Vercel frontend
 ]
 ROOT_URLCONF = 'ecommerce.urls'
 
