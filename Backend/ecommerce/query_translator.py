@@ -36,9 +36,13 @@ class QueryTranslator:
         1. Use $lt/$gt for numeric comparisons
         2. Use $regex with $options:"i" for text
         3. Return ONLY valid MongodB query in your response without any extra English explanations after the JSON.
-        
+        4. Make sure to put the options feature when the query is related to a description (It's a must)
+        5. Don't use exists feature in query and always have a description field with regex and options features and price field
+        6. If the price filed is not specified assume its value greater than zero.
+        7. Always extract a value for the description field from the input query.
+
         Example Input: "Gaming laptops under 30000 L.E"
-        Output: {{"description": {{"$regex": "laptop"}}, "price": {{"$lt": 30000}}}}
+        Output: {{"description": {{"$regex": "laptop", "$options": "i"}}, "price": {{"$lt": 30000}}}}
         
         Input: {query} [/INST]</s>"""
         
@@ -49,14 +53,14 @@ class QueryTranslator:
         
         return LLMChain(llm=self.llm, prompt=prompt)
 
-    @lru_cache(maxsize=128)
+    @lru_cache(maxsize=256)
     def _generate_mongo_query(self, query: str) -> dict:
         """Convert natural language to MongoDB query with caching"""
         try:
             #response = self.chain.run(query=query)
             response = self.chain.invoke(
-                {"query": query, "fields": {"price","description"}},
-                config={"timeout": 15}
+                {"query": query, "fields": {"price","description","rating"}},
+                config={"timeout": 60}
                 )
             
             # Extract JSON from model response
@@ -65,7 +69,8 @@ class QueryTranslator:
             #print(f"response: {response['text']}")
             #print("====================================")
             json_str = response["text"]
-            json_match = re.findall(r'<\/s>({.+})', json_str, re.DOTALL)[0]
+            print(f"HEY: {json_str}")
+            json_match = re.findall(r'<\/s>"?({.+})', json_str, re.DOTALL)[0]
             #print(f"json_match: {json_match}")        
             if not json_match:
                 raise ValueError("No JSON found in model response")
@@ -93,9 +98,9 @@ class QueryTranslator:
         """Main function: Input English, output MongoDB results"""
         try:
             # Generate and validate query
-            print(english_query)
+            #print(english_query)
             mongo_query = self._generate_mongo_query(english_query.strip().lower())
-            print(mongo_query)
+            print(f"LLM API Output: {mongo_query}")
             #self._validate_query(mongo_query)
             
             # Execute query
