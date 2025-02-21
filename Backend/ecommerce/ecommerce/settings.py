@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,10 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'tf%(ynhf72x0yz+x$q@d6!sf&3b#2k7b084y$67tjd12nmljen'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://left-overs.vercel.app','.vercel.app', 'localhost','127.0.0.1', ]
 
+CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
@@ -54,6 +56,9 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",  # Allow Vue frontend
     "https://left-overs.vercel.app"  # Allow Vercel frontend
+]
+CSRF_TRUSTED_ORIGINS = [
+    "https://left-overs.vercel.app",
 ]
 ROOT_URLCONF = 'ecommerce.urls'
 
@@ -124,3 +129,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
