@@ -52,11 +52,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",  # Allow Vue frontend
-    "https://left-overs.vercel.app"  # Allow Vercel frontend
-]
-
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:8080",  # Allow Vue frontend
+#     "https://left-overs.vercel.app"  # Allow Vercel frontend
+# ]
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_METHODS = [
     'GET',
     'POST',
