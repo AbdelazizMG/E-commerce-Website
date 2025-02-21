@@ -26,9 +26,8 @@ SECRET_KEY = 'tf%(ynhf72x0yz+x$q@d6!sf&3b#2k7b084y$67tjd12nmljen'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://left-overs.vercel.app','.vercel.app', 'localhost','127.0.0.1', ]
+ALLOWED_HOSTS = ['left-overs.vercel.app','.vercel.app', 'localhost','127.0.0.1', ]
 
-CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
@@ -57,9 +56,22 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",  # Allow Vue frontend
     "https://left-overs.vercel.app"  # Allow Vercel frontend
 ]
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS'
+]
+
+CORS_ALLOW_CREDENTIALS = True 
+
 CSRF_TRUSTED_ORIGINS = [
     "https://left-overs.vercel.app",
 ]
+
 ROOT_URLCONF = 'ecommerce.urls'
 
 TEMPLATES = [
